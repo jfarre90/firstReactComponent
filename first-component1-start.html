@@ -15,18 +15,16 @@
   	class Pet extends React.Component {
   		render() {
   		  const liStyle = {fontSize: '1.5em'};
+  		  const hobbies = ["Sleeping", "Eating", "Cuddling"];
   			return (
   				<div className="card"> //We are using className because bable doesn't distinguish between the javascript class and the HTML class
   					<h2 className="name">Moxie</h2>
   					<img src="https://github.com/tigarcia/Moxie/raw/master/moxie.png" alt= "moxie my cat" /> //it is very important to close the tag as otherwise it will give problems in JSX
   				  <h5 style={{fontSize: '2em', margin: '2px'}}>Hobbies:</h5> //This is one way of stylingm check the explanations below to understand the other way.
   				  <ul>
-  				    <li style={liStyle}>Sleep</li>
-  				    <li style={liStyle}>Eat</li>
-  				    <li style={liStyle}>Repeat</li> //Because we are inside a javascript object, we use javascript naming using the camelstyle, and not the CSS. 
-  				    //The curly braces in JSX mean that we want to evaluate what is inside. similar to the <% %> in express. For example see below:
-  				    {5+3}
-  				    {"green " + "blue"
+  				    {hobbies.map((h,i) => {
+  				      return <li key={i} style={style}>h</li>
+  				    })} //This trhows a console error as for React to work properly it needs us to assign a key to each element generated, hence why we add a unique key for each element using the index
   				  </ul>
   				</div>
   			)
