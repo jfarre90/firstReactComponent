@@ -4,26 +4,25 @@
     <meta charset="UTF-8">
     <title>Component 1</title>
     <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
-    <!-- The one below is what we use to render something in the screen -->
     <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script> 
-    <!-- The one below is what we use to create and render items to be sent to the DOM -->
-    <script src="https://unpkg.com/react-dom-factories@1.0.0/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+    <!-- We no longer need the react dom factories because we are adding Babel -->
 </head>
 <body>
   <div id="app"></div>
-  <script type="text/javascript">
+  <script type="text/babel"> //We change the text to babel, instead of javascript
   	class Pet extends React.Component {
   		render() {
-  			const h2 = ReactDOMFactories.h2(null, "Moxie") //the first parameter refers to the parameters inside the h2 and the second, what you would like inside the h2 tag
-  			const img = ReactDOMFactories.img({
-  				src: "https://github.com/tigarcia/Moxie/raw/master/moxie.png",
-  				alt: "moxie my cat"
-  			});//we have added something here in the first parameter because we want to give a source of the image.
-  			return ReactDOMFactories.div(null, h2, img); //we are gonna put the h2 and image inside of a div that has null attributes. If we wanted to give it an attribute like a class, we could do that instead of null
+  			return (
+  				<div>
+  					<h2>Moxie</h2>
+  					<img src="https://github.com/tigarcia/Moxie/raw/master/moxie.png" alt= "moxie my cat" /> //it is very important to close the tag as otherwise it will give problems in JSX
+  				</div>
+  			)
   		}
-  	} //All react components will include a render, which tells what to send to the HTML (inside the HTML tag)
+  	} 
 
-  	ReactDOM.render(React.createElement(Pet),document.getElementById("app"));//the first item is the element you want to render, in this case it creates an HTML element out of the PET component. The second argument is where to place the elemment.
+  	ReactDOM.render(<Pet />,document.getElementById("app"));
   </script>
 </body>
 </html>
